@@ -6,8 +6,11 @@ import theme from "../themes/default_theme";
 
 
 export default function MyApp({ Component, pageProps }) {
-    // Remove the server-side injected CSS (the CSS will be injected again on the client later)
-    // (needed for better compatibility with Material UI)
+
+    /**
+     * Removes the server-side injected CSS (the CSS will be injected again on the client later). This is needed for
+     * better compatibility with Material UI)
+     */
     React.useEffect(() => {
         const jssStyles = document.querySelector('#jss-server-side');
         if (jssStyles) {
@@ -15,6 +18,7 @@ export default function MyApp({ Component, pageProps }) {
         }
     }, []);
 
+    // Render:
     return (
         <>
             <Head>
@@ -23,7 +27,7 @@ export default function MyApp({ Component, pageProps }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ThemeProvider theme={theme}>
-                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                {/* CssBaseline kickstarts an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
                 <Component {...pageProps} />
             </ThemeProvider>
